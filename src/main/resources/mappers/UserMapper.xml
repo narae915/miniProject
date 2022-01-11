@@ -3,37 +3,39 @@
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hair.salon.dao.UserMapper">
-<insert id="userInsert" parameterType="User">
-	insert into user_tbl(
-	    user_id
-	    ,user_pw
-	    ,user_nm
-	    ,user_tel
-	    )
-	values(
- 		#{userId}
- 		,#{userPw}
- 		,#{userNm}
- 		,#{userTel}
-	    )
- </insert>
- <select id="idChk" parameterType="String" resultType="String">
-		select
-			user_id as userId
-		from 
-			user_tbl
+	<insert id="userInsert" parameterType="User">
+		insert into user_tbl(
+		    user_id,
+		    user_pw,
+		    user_nm,
+		    user_tel
+		    )
+		values(
+	 		#{userId },
+	 		#{userPw },
+	 		#{userNm },
+	 		#{userTel }
+		    )
+	 </insert>
+	 
+	 <select id="idChk" parameterType="String" resultType="String">
+			select
+				user_id as userId
+			from 
+				user_tbl
+			where
+				user_id like #{userId }
+	 </select>
+	 
+	 <select id="selectUserNm" parameterType="User" resultType="String">
+	 	select
+	    	user_nm
+		from
+	   		user_tbl
 		where
-			user_id like #{userId }
- </select>
- <select id="selectVO" parameterType="User" resultType="String">
- 	select
-    	user_id
-	from
-   		user_tbl
-	where
-    	user_id = #{userId}
-	and
-    	user_pw = #{userPw}
- </select>
+	    	user_id = #{userId }
+		and
+	    	user_pw = #{userPw }
+	 </select>
  
 </mapper>

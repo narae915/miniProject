@@ -37,12 +37,12 @@ public class UserDAO {
 		return result;
 	}
 
-	public String selectVO(UserVO user) {
+	public String selectUserNm(UserVO user) {
 		String result = null ;
 		UserMapper mapper = null;
 		try {
 			mapper =session.getMapper(UserMapper.class);
-			result = mapper.selectVO(user);
+			result = mapper.selectUserNm(user);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
