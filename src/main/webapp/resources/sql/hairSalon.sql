@@ -1,0 +1,72 @@
+-- 프로젝트 파일 : hairSalon
+DROP TABLE USER_TBL;
+DROP TABLE HAIRSALON_TBL;
+DROP TABLE ORDER_TBL;
+DROP TABLE REVIEW_TBL;
+DROP SEQUENCE DES_NUM_SEQ;
+
+-- 사용자 테이블 USER_TBL : USER_ID, USER_PW, USER_NM, USER_TEL
+CREATE TABLE USER_TBL
+(
+    USER_ID VARCHAR2(20) PRIMARY KEY,   		-- 사용자 ID (3~10자리)
+    USER_PW VARCHAR2(24)    NOT NULL,			-- 사용자 PW (4~12자리)
+    USER_NM VARCHAR2(20)   UNIQUE NOT NULL,     -- 사용자 이름
+    USER_TEL VARCHAR2(13)    NOT NULL        	-- 사용자 전화번호
+);
+
+-- 테스트용으로 사용해주세요
+INSERT INTO USER_TBL (USER_ID, USER_PW, USER_NM, USER_TEL)
+VALUES ('hong', '1234', '홍길동', '010-1234-5678');
+INSERT INTO USER_TBL (USER_ID, USER_PW, USER_NM, USER_TEL)
+VALUES ('jeon', '5678', '전우치', '010-1111-2222');
+SELECT * FROM USER_TBL;
+COMMIT;
+
+-- 미용실 테이블 HAIRSALON_TBL : DES_NUM, DES_NM, DES_STATUS
+CREATE TABLE HAIRSALON_TBL
+(
+    DES_NUM NUMBER PRIMARY KEY,		 		-- 디자이너 사원번호
+    DES_NM      VARCHAR2(20)    NOT NULL,   -- 디자이너 이름
+    DES_STATUS  NUMBER       DEFAULT 0      -- 디자이너 예약여부(상태)
+);
+
+-- 테스트용으로 사용해주세요
+INSERT INTO HAIRSALON_TBL (DES_NUM, DES_NM)
+VALUES (des_num_seq.nextval, '카나다');
+INSERT INTO HAIRSALON_TBL (DES_NUM, DES_NM)
+VALUES (des_num_seq.nextval, '오키나와');
+SELECT * FROM HAIRSALON_TBL;
+COMMIT;
+
+
+-- 주문 테이블 ORDER_TBL : USER_ID, DES_NUM, RES_INDATE, HAIR_TYPE, PRICE, RES_STATUS
+CREATE TABLE ORDER_TBL
+(
+    USER_NM PRIMARY KEY REFERENCES USER_TBL(USER_NM), -- 사용자 이름
+    DES_NUM     REFERENCES HAIRSALON_TBL(DES_NUM),    -- 디자이너 사원번호
+    RES_INDATE  DATE            DEFAULT SYSDATE,        -- 예약 날짜
+    HAIR_TYPE   VARCHAR2(20)    NOT NULL,               -- 시술 종류
+    PRICE       NUMBER          NOT NULL,               -- 가격
+    RES_STATUS  NUMBER          DEFAULT 0               -- 예약 여부
+);
+
+-- 테스트용으로 사용해주세요
+INSERT INTO ORDER_TBL (USER_NM, DES_NUM, HAIR_TYPE, PRICE)
+VALUES ('홍길동',1,'레이어드컷', 19000 );
+INSERT INTO ORDER_TBL (USER_NM, DES_NUM, HAIR_TYPE, PRICE)
+VALUES ('전우치',2,'웨이브펌', 150000);
+SELECT * FROM ORDER_TBL;
+commit;
+
+-- 댓글 테이블 REVIEW_TBL : USER_ID, DES_NUM, SCORE, REVIEW, REV_INDATE
+CREATE TABLE REVIEW_TBL
+(
+    USER_NM PRIMARY KEY REFERENCES USER_TBL(USER_NM),  -- 사용자 이름
+    DES_NUM REFERENCES HAIRSALON_TBL(DES_NUM),    		-- 디자이너 사원번호
+    SCORE   NUMBER(5)       NOT NULL,               	-- 평점
+    REVIEW  VARCHAR2(1000)  NOT NULL,               	-- 후기
+    REV_INDATE  DATE DEFAULT SYSDATE         			-- 작성 날짜
+);
+
+-- 시퀀스 생성
+CREATE SEQUENCE DES_NUM_SEQ;
