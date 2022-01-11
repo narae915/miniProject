@@ -6,10 +6,9 @@ import org.springframework.stereotype.Repository;
 
 import com.hair.salon.vo.UserVO;
 
-
 @Repository
 public class UserDAO {
-
+	
 	@Autowired
 	private SqlSession session;
 	
