@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+	  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+	<configuration>
+	<typeAliases> 
+		<typeAlias type="com.hair.salon.vo.UserVO" alias="User"/>																		
+		<typeAlias type="com.hair.salon.vo.OrderVO" alias="Order"/>
+		<typeAlias type="com.hair.salon.vo.HairSalonVO" alias="Hairsalon"/>
+		<typeAlias type="com.hair.salon.vo.ReviewVO" alias="Review"/>
+	</typeAliases>
+	 <mappers>
+	 	<mapper resource="mappers/UserMapper.xml" />
+	 	<mapper resource="mappers/OrderMapper.xml" />
+	 </mappers> 
+</configuration>
