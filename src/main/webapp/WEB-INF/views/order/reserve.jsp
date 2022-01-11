@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<<<<<<< HEAD
 <title>예약</title>
 	<script type = "text/javascript" src="/resources/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript">
@@ -22,6 +23,9 @@
 			}
 		}
 	</script>
+=======
+<title>Reservation</title>
+>>>>>>> main
 </head>
 <body>
 	<h1>[ 예약 ]</h1>

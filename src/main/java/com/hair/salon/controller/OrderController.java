@@ -12,6 +12,14 @@ public class OrderController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
 
+	/* 예약 리스트 페이지 이동 */
+	@RequestMapping(value ="/resList", method =RequestMethod.GET)
+	public String resList () {
+		logger.info("resList 매서드 실행.(GET)");
+		
+		return "resList";
+	}
+
 	/* 예약 페이지 이동 */
 	@RequestMapping(value = "/reserve", method = RequestMethod.GET)
 	public String reserve()
@@ -19,15 +27,6 @@ public class OrderController {
 		logger.info("reserve 메서드 실행(GET).");
 		
 		return "reserve";
-	}
-	
-	/* 예약 리스트 페이지 이동 */
-	@RequestMapping (value = "/resList", method = RequestMethod.GET)
-	public String resList() 
-	{
-		logger.info("resList 메서드 실행(GET).");
-		
-		return "resList";
 	}
 	
 	/* 예약 수정 페이지 이동 */
@@ -40,3 +39,4 @@ public class OrderController {
 	}
 	
 } // class OrderController
+
