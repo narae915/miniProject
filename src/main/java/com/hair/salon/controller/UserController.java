@@ -90,7 +90,7 @@ public class UserController {
 		logger.info("userPw:{} ",userPw);
 		
 		String userNm = service.selectUserNm(userId,userPw);
-		String returnUrl;
+		String returnUrl= null;
 		logger.info("userNm:{} ",userNm);
 		
 		if(userNm == null) {
@@ -101,7 +101,6 @@ public class UserController {
 			session.setAttribute("loginId", userId);
 			session.setAttribute("loginName", userNm);
 			returnUrl = "redirect:/";
-			
 		}		
 		return returnUrl;
 	}
