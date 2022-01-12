@@ -13,7 +13,7 @@ public class OrderController {
 	private static final Logger logger = LoggerFactory.getLogger(OrderController.class);
 	
 	/* 예약 리스트 페이지 이동 */
-	@RequestMapping(value = "/resList", method = RequestMethod.GET)
+	@RequestMapping(value ="/resList", method=RequestMethod.GET)
 	public String resList () {
 		logger.info("resList 메서드 실행(GET)");
 		
