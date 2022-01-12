@@ -6,33 +6,36 @@
 <meta charset="UTF-8">
 <title>로그인</title>
 <script type="text/javascript">
-				function logincheck() {
-					var checkId = document.getElementById("checkId").value;
-					var checkPw = document.getElementById("checkPw").value;
-					
-					if(checkId == "" || checkId.length == 0){
-						alert("ID를 입력해주세요");
-						return false;
-					}else if(checkId.length < 3 || checkId.length > 10){
-						alert("ID는 3~10글자 사이로 입력해주세요");
-						return false;
-					}
-					
-					if(checkPw == "" || checkPw.length == 0){
-						alert("비밀번호를 입력해주세요");
-						return false;
-					}else if(checkPw.length < 4 || checkPw.length > 12){
-						alert("비밀번호는 4~12글자 사이로 입력해주세요");
-						return false;
-					}
-			
-					return true;
-				}
+	function loginCheck() {
+		var checkId = document.getElementById("checkId").value;
+		var checkPw = document.getElementById("checkPw").value;
+		var result = false;
+		
+		if(checkId == "" || checkId.length == 0){
+			alert("ID를 입력해주세요");
+			return result;
+		}else if(checkId.length < 3 || checkId.length > 10){
+			alert("ID는 3~10글자 사이로 입력해주세요");
+			return result;
+		}
+		
+		if(checkPw == "" || checkPw.length == 0){
+			alert("비밀번호를 입력해주세요");
+			return result;
+		}else if(checkPw.length < 4 || checkPw.length > 12){
+			alert("비밀번호는 4~12글자 사이로 입력해주세요");
+			return result;
+		}
+		
+		result = true;
+		return result;
+	}
 		</script>
 </head>
+
 <body>
  <h1> [로그인]</h1>
-<form action="/user/login" method="post" onsubmit="logincheck();">
+<form action="/user/login" method="post" onsubmit="return loginCheck();">
 	<table>
 		<tr>
 			<td class="bold">ID</td>
