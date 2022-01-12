@@ -30,11 +30,12 @@ public class UserService {
 		return dao.idChk(idChk);
 	}
 
-	public String selectVO(String userId, String userPw) {
+	public String selectUserNm(String userId, String userPw) {
 		UserVO user = new UserVO();
 		user.setUserId(userId);
 		user.setUserPw(userPw);
-		return dao.selectVO(user);
+		
+		return dao.selectUserNm(user);
 	}
 	
 	
