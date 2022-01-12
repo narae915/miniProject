@@ -26,7 +26,7 @@
 
 <form>
 	<p>미용실 소개</p>
-	<input type="button" value="예약버튼" onclick="location.href='/user/reserve';">
+	<input type="button" value="예약버튼" onclick="location.href='/order/reserve';">
 </form>
 
 

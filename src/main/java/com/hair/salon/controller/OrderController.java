@@ -27,6 +27,7 @@ public class OrderController {
 	/* 예약 리스트 페이지 이동(조회) */
 	@RequestMapping(value = "/resList", method = RequestMethod.GET)
 	public String resList (HttpSession session, Model model) {
+
 		logger.info("resList 메서드 실행(GET)");
 		
 		String userNm = (String)session.getAttribute("loginName");
