@@ -5,6 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인</title>
+<style>
+	#r {
+		color:red;
+		font-weight:bold;
+	}
+</style>
 <script type="text/javascript">
 	function loginCheck() {
 		var checkId = document.getElementById("checkId").value;
@@ -34,6 +40,7 @@
 </head>
 
 <body>
+
  <h1> [로그인]</h1>
 <form action="/user/login" method="post" onsubmit="return loginCheck();">
 	<table>
@@ -45,15 +52,28 @@
 			<td class="bold">비밀번호</td>
 			<td><input type="password" name="userPw" id="checkPw"/></td>
 		</tr>
+		<span>
+			<c:if test="${not empty errorMessage}">
+				<tr id="r">
+					<td colspan="2"> ${errorMessage } </td>
+				</tr>
+			</c:if> 
+		</span>
 		<tr>
 			<td colspan="2" class="center white">
 				<input type="submit" value="로그인" />
 			</td>
 		</tr>
+		
 	</table>
 	
 	<p>회원이 아니신가요?</p>
 	<input type="button" value="회원가입 후 로그인 " onclick="location.href='/user/join';">
+	
+	
+    
+		
+	
 </form>
 </body>
 </html>

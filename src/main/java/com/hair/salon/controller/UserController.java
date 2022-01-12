@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -84,7 +85,7 @@ public class UserController {
 	
 	/* 로그인 시도 */
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
-	public String login(HttpSession session, String userId, String userPw) {
+	public String login(HttpSession session, String userId, String userPw, Model model) {
 		logger.info("login메소드 실행(POST)");
 		logger.info("userId:{} ",userId);
 		logger.info("userPw:{} ",userPw);
@@ -93,8 +94,12 @@ public class UserController {
 		String returnUrl;
 		logger.info("userNm:{} ",userNm);
 		
+		String errorMessage ="ID와 PW가 일치 하지 않습니다.";
+		
 		if(userNm == null) {
 			logger.info("로그인 실패");
+			
+			model.addAttribute("errorMessage",errorMessage);
 			returnUrl = "/user/login";
 		}else {
 			logger.info("로그인 성공");
