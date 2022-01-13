@@ -17,7 +17,7 @@ public class OrderController {
 	public String resList () {
 		logger.info("resList 메서드 실행(GET)");
 		
-		return "order/resList";
+		return "/order/resList";
 	}
 
 	/* 예약 페이지 이동 */
