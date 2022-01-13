@@ -30,9 +30,6 @@ public class OrderController {
 
 		logger.info("resList 메서드 실행(GET)");
 		
-
-		return "/order/resList";
-
 		String userNm = (String)session.getAttribute("loginName");
 		logger.info("loginName : {}", userNm);
 		
