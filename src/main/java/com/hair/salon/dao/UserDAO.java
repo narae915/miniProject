@@ -12,6 +12,7 @@ public class UserDAO {
 	@Autowired
 	private SqlSession session;
 	
+	// 회원가입
 	public int userInsert(UserVO user) {
 		int cnt=0;
 		UserMapper mapper = null;
