@@ -91,7 +91,7 @@ public class UserController {
 		logger.info("userPw:{} ",userPw);
 		
 		String userNm = service.selectUserNm(userId,userPw);
-		String returnUrl;
+		String returnUrl= null;
 		logger.info("userNm:{} ",userNm);
 		
 		String errorMessage ="ID와 PW가 일치 하지 않습니다.";
@@ -106,7 +106,6 @@ public class UserController {
 			session.setAttribute("loginId", userId);
 			session.setAttribute("loginName", userNm);
 			returnUrl = "redirect:/";
-			
 		}		
 		return returnUrl;
 	}

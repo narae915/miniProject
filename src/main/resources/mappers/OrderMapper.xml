@@ -2,5 +2,44 @@
 <!DOCTYPE mapper
 	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.hair.salon.DAO.OrderMapper">
+<mapper namespace="com.hair.salon.dao.OrderMapper">
+
+	<select id="getOrderList" parameterType="String" resultType="Order">
+		select
+		ot.res_num as resNum,
+	    ot.user_nm as userNm,
+	    to_char(ot.res_indate, 'yyyy-mm-dd HH24:MI:SS') as resIndate,
+	    ht.des_nm as desNm,
+	    ot.hair_type as hairType,
+	    ot.price as price
+	from 
+	    order_tbl ot,
+	    hairSalon_tbl ht
+	where
+	    ot.des_num = ht.des_num
+	    and
+	    ot.user_nm = #{userNm }
+	</select>
+	
+	<!-- 예약 -->
+	<insert id = "insertReserve" parameterType = "Order">
+		insert into ORDER_TBL
+		(
+			res_Num,
+			user_Nm,
+			des_Num,
+			res_Indate,
+			hair_Type,
+			price
+		)
+		values
+		(
+			res_num_seq.nextval,
+			#{userNm },
+			#{desNum },
+			to_date(#{resIndate }, 'YYYY-MM-DDHH24:MI'),
+			#{hairType },
+			#{price }
+		)
+	</insert>
 </mapper>
